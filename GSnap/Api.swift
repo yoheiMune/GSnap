@@ -9,7 +9,8 @@
 import Foundation
 import Alamofire
 
-let apiRoot = "http://localhost:5000"
+//let apiRoot = "http://localhost:5000"
+let apiRoot = "http://100.67.164.251:5000"
 
 class ApiManager {
     
@@ -18,7 +19,7 @@ class ApiManager {
     func login(loginId: String, password: String, callback: @escaping (([String: String]?) -> Void)) {
         
         let url = apiRoot + "/api/login"
-        let headers: HTTPHeaders = [ "ContentType" : "application/json" ]
+        let headers: HTTPHeaders = [ "Content-type" : "application/json" ]
         let params: [String: Any] = [
             "login_id" : loginId,
             "password" : password
@@ -71,7 +72,40 @@ class ApiManager {
                 callback(nil, data)
             }
         }
+    }
+    
+    func post(image: UIImage, text: String, callback: @escaping ([String: Any]?) -> Void) {
 
+        guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else {
+            callback([ "message" : "ログインが必要です"])
+            return
+        }
+        let url = apiRoot + "/api/posts?api_token=" + apiToken
+        let headers : HTTPHeaders = [ "Content-type" : "multipart/form-data" ]
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(text.data(using: .utf8, allowLossyConversion: true)!, withName: "body")
+            multipartFormData.append(UIImagePNGRepresentation(image)!, withName: "file", fileName: "image.png", mimeType: "image/png")
+            
+        }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { result in
+            switch result {
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    if response.response?.statusCode != 201 {
+                        if let result = response.result.value as? [String: Any] {
+                            callback(result)
+                        } else {
+                            callback([ "message" : "サーバーエラーが発生しました" ])
+                        }
+                        return
+                    }
+                    callback(nil)
+                }
+            case .failure(let error):
+                print(error)
+                callback([ "message" : "サーバーエラーが発生しました" ])
+            }
+        }
     }
     
 }

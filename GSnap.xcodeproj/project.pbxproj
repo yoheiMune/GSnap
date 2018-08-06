@@ -13,6 +13,7 @@
 		1E0379B8211811BB000A0080 /* Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0379B7211811BB000A0080 /* Ext.swift */; };
 		1E0379BA21181418000A0080 /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0379B921181418000A0080 /* TimelineCell.swift */; };
 		1E0379BC2118143D000A0080 /* TimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E0379BB2118143D000A0080 /* TimelineCell.xib */; };
+		1E0379BE21181C92000A0080 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0379BD21181C92000A0080 /* PostViewController.swift */; };
 		1E53A1EF210E0DB700973009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E53A1EE210E0DB700973009 /* AppDelegate.swift */; };
 		1E53A1F1210E0DB700973009 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E53A1F0210E0DB700973009 /* LoginViewController.swift */; };
 		1E53A1F4210E0DB700973009 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E53A1F2210E0DB700973009 /* Login.storyboard */; };
@@ -28,6 +29,7 @@
 		1E0379B7211811BB000A0080 /* Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext.swift; sourceTree = "<group>"; };
 		1E0379B921181418000A0080 /* TimelineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
 		1E0379BB2118143D000A0080 /* TimelineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineCell.xib; sourceTree = "<group>"; };
+		1E0379BD21181C92000A0080 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		1E53A1EB210E0DB700973009 /* GSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E53A1EE210E0DB700973009 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E53A1F0210E0DB700973009 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				1E0379B7211811BB000A0080 /* Ext.swift */,
 				1E0379B921181418000A0080 /* TimelineCell.swift */,
 				1E0379BB2118143D000A0080 /* TimelineCell.xib */,
+				1E0379BD21181C92000A0080 /* PostViewController.swift */,
 			);
 			path = GSnap;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			files = (
 				1E0379BA21181418000A0080 /* TimelineCell.swift in Sources */,
 				1E0379B22117FDA1000A0080 /* Api.swift in Sources */,
+				1E0379BE21181C92000A0080 /* PostViewController.swift in Sources */,
 				1E0379B621180B1B000A0080 /* TimelineViewController.swift in Sources */,
 				1E53A1F1210E0DB700973009 /* LoginViewController.swift in Sources */,
 				1E53A1EF210E0DB700973009 /* AppDelegate.swift in Sources */,

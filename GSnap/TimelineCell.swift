@@ -27,6 +27,9 @@ class TimelineCell : UITableViewCell {
             
             print("post!! \(post)")
             
+            // 画像は一旦初期化.
+            self.photoImageView.image = UIImage(named: "default")
+            
             if let user = post["user"] as? [String: Any] {
                 if let avatarUrl = user["avatar_url"] as? String {
                     let url = apiRoot + avatarUrl

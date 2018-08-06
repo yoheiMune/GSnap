@@ -14,8 +14,12 @@ class TimelineViewController: UITableViewController {
     
     override func viewDidLoad() {
         self.title = "タイムライン"
-        self.fetchData()
         self.tableView.register(UINib(nibName: "TimelineCell", bundle: nil), forCellReuseIdentifier: "TimelineCell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.fetchData()
     }
 }
 
@@ -32,15 +36,8 @@ extension TimelineViewController {
             cell.post = self.posts[indexPath.row]
             return cell
         }
-        
+
         return UITableViewCell()
-        
-//        var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-//        if (cell == nil) {
-//            cell = UITableViewCell()
-//        }
-//        cell?.textLabel?.text = self.posts[indexPath.row]["body"] as! String
-//        return cell!
     }
 }
 
