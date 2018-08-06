@@ -63,10 +63,17 @@ class PostViewController: UIViewController {
         }
         
         // APIで投稿.
+        self.showProgress()
         ApiManager.shared.post(image: image, text: text) { [weak self] errorInfo in
             
-            if (errorInfo != nil) {
-                self?.showAlert(message: "エラーが発生しました。")
+            self?.hideProgress()
+            
+            if let errorInfo = errorInfo {
+                if let message = errorInfo["message"] as? String {
+                    self?.showAlert(message: message)
+                } else {
+                    self?.showAlert(message: "エラーが発生しました。")
+                }
                 return
             }
             

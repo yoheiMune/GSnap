@@ -17,6 +17,21 @@ extension UIViewController {
         })
         self.present(alert, animated: true)
     }
+    
+    func showProgress() {
+        let indicator = UIActivityIndicatorView()
+        indicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        indicator.center = self.view.center
+        indicator.tag = 837192
+        self.view.addSubview(indicator)
+        indicator.startAnimating()
+    }
+    
+    func hideProgress() {
+        if let indicator = self.view.viewWithTag(837192) {
+            indicator.removeFromSuperview()
+        }
+    }
 }
 
 extension UIView {
