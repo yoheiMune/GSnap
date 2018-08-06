@@ -68,14 +68,13 @@ extension MypageViewController {
             if let posts = posts {
                 // 自分の画像にだけ絞る.
                 var posts = posts
-                if let userId = UserDefaults.standard.integer(forKey: "userId") as? Int {
-                    posts = posts.filter({ post -> Bool in
-                        if let id = post["user_id"] as? Int {
-                            return userId == id
-                        }
-                        return false
-                    })
-                }
+                let userId = UserDefaults.standard.integer(forKey: "userId")
+                posts = posts.filter({ post -> Bool in
+                    if let id = post["user_id"] as? Int {
+                        return userId == id
+                    }
+                    return false
+                })
                 self.posts = posts
             }
             self.collectionView?.reloadData()
