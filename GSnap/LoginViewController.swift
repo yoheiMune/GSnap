@@ -41,15 +41,29 @@ class LoginViewController: UIViewController {
             return
         }
         
-        // TODO 仮で.
-        if loginId != "test" || loginPassword != "test" {
-            errorLabel.isHidden = false
-            errorLabel.text = "ログインIDまたはパスワードが違います。"
-            return
-        }
-        
         // エラー表示を非表示に.
         errorLabel.isHidden = true
+        
+        // APIでログイン.
+        ApiManager.shared.login(loginId: loginId, password: loginPassword) { [weak self] errorInfo in
+            
+            // エラー表示.
+            if let errorInfo = errorInfo {
+                self?.errorLabel.isHidden = false
+                self?.errorLabel.text = errorInfo["message"]
+                return
+            }
+            
+            // 成功したので、スレッドを表示する.
+            
+            
+        }
+        
+        
+        
+        
+        
+        
         
         // OK.
         
