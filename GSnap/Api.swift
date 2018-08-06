@@ -23,7 +23,7 @@ class ApiManager {
             "login_id" : loginId,
             "password" : password
         ]
-                
+        
         Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
                 let statusCode = response.response!.statusCode
@@ -45,6 +45,53 @@ class ApiManager {
                 }
                 callback(nil)
         }
-        
     }
+    
+    func getTimeline(callback: @escaping ([String: Any]?, [[String: Any]]?) -> Void) {
+        
+        guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else {
+            callback([ "message" : "ログインが必要です"], nil)
+            return
+        }
+        
+        let url = apiRoot + "/api/posts?api_token=" + apiToken
+
+        Alamofire.request(url).responseJSON { response in
+
+            let statusCode = response.response!.statusCode
+            
+            // 失敗した場合.
+            if statusCode != 200 {
+                callback([ "message" : "サーバーでエラーが発生しました。"], nil)
+                return
+            }
+
+            // 成功した場合.
+            if let data = response.result.value as? [[String : Any]] {
+                callback(nil, data)
+            }
+        }
+
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

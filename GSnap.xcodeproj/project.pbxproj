@@ -10,6 +10,7 @@
 		1E0379B22117FDA1000A0080 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0379B12117FDA1000A0080 /* Api.swift */; };
 		1E0379B421180AF7000A0080 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E0379B321180AF7000A0080 /* Main.storyboard */; };
 		1E0379B621180B1B000A0080 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0379B521180B1B000A0080 /* TimelineViewController.swift */; };
+		1E0379B8211811BB000A0080 /* Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0379B7211811BB000A0080 /* Ext.swift */; };
 		1E53A1EF210E0DB700973009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E53A1EE210E0DB700973009 /* AppDelegate.swift */; };
 		1E53A1F1210E0DB700973009 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E53A1F0210E0DB700973009 /* LoginViewController.swift */; };
 		1E53A1F4210E0DB700973009 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E53A1F2210E0DB700973009 /* Login.storyboard */; };
@@ -22,6 +23,7 @@
 		1E0379B12117FDA1000A0080 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		1E0379B321180AF7000A0080 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1E0379B521180B1B000A0080 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		1E0379B7211811BB000A0080 /* Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext.swift; sourceTree = "<group>"; };
 		1E53A1EB210E0DB700973009 /* GSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E53A1EE210E0DB700973009 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E53A1F0210E0DB700973009 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				1E53A1F7210E0DB800973009 /* LaunchScreen.storyboard */,
 				1E0379B321180AF7000A0080 /* Main.storyboard */,
 				1E0379B521180B1B000A0080 /* TimelineViewController.swift */,
+				1E0379B7211811BB000A0080 /* Ext.swift */,
 			);
 			path = GSnap;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				1E0379B621180B1B000A0080 /* TimelineViewController.swift in Sources */,
 				1E53A1F1210E0DB700973009 /* LoginViewController.swift in Sources */,
 				1E53A1EF210E0DB700973009 /* AppDelegate.swift in Sources */,
+				1E0379B8211811BB000A0080 /* Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

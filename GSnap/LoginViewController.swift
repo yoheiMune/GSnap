@@ -18,7 +18,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // TODO 開発よう.
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.showTimelineStoryboard()
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,7 +62,7 @@ class LoginViewController: UIViewController {
             // 成功したので、スレッドを表示する.
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
                 appDelegate.showTimelineStoryboard()
-            }            
+            }
             
         }
         
