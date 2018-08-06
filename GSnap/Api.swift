@@ -39,6 +39,10 @@ class ApiManager {
                 
                 // 成功した場合.
                 if let data = response.result.value as? [String : Any] {
+                    // ユーザーIDを保存しておく.
+                    if let userId = data["id"] as? Int {
+                        UserDefaults.standard.set(userId, forKey: "userId")
+                    }
                     // APIトークンを保存しておく.
                     if let apiToken = data["api_token"] as? String {
                         UserDefaults.standard.set(apiToken, forKey: "apiToken")

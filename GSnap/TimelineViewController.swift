@@ -31,13 +31,9 @@ extension TimelineViewController {
         return 1
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineCell") as? TimelineCell {
-            cell.post = self.posts[indexPath.row]
-            return cell
-        }
-
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineCell") as! TimelineCell
+        cell.post = self.posts[indexPath.row]
+        return cell
     }
 }
 
