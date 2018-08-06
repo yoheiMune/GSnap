@@ -23,9 +23,7 @@ class ApiManager {
             "login_id" : loginId,
             "password" : password
         ]
-        
-        print("params: \(params)")
-        
+                
         Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
                 let statusCode = response.response!.statusCode
@@ -45,6 +43,7 @@ class ApiManager {
                         UserDefaults.standard.set(apiToken, forKey: "apiToken")
                     }
                 }
+                callback(nil)
         }
         
     }
