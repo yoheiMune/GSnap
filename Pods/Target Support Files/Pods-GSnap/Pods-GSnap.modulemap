@@ -1,0 +1,6 @@
+framework module Pods_GSnap {
+  umbrella header "Pods-GSnap-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -12,6 +12,7 @@
 		1E53A1F4210E0DB700973009 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E53A1F2210E0DB700973009 /* Login.storyboard */; };
 		1E53A1F6210E0DB800973009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E53A1F5210E0DB800973009 /* Assets.xcassets */; };
 		1E53A1F9210E0DB800973009 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E53A1F7210E0DB800973009 /* LaunchScreen.storyboard */; };
+		8A8E5938706AD7AA759CB1E2 /* Pods_GSnap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29759C209E58304A5FC275EB /* Pods_GSnap.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		1E53A1F5210E0DB800973009 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E53A1F8210E0DB800973009 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E53A1FA210E0DB800973009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29759C209E58304A5FC275EB /* Pods_GSnap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GSnap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BB43E7C78DAAA5B3074D783 /* Pods-GSnap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GSnap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GSnap/Pods-GSnap.debug.xcconfig"; sourceTree = "<group>"; };
+		9E8021795595C86E75CF7AF8 /* Pods-GSnap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GSnap.release.xcconfig"; path = "Pods/Target Support Files/Pods-GSnap/Pods-GSnap.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A8E5938706AD7AA759CB1E2 /* Pods_GSnap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				1E53A1ED210E0DB700973009 /* GSnap */,
 				1E53A1EC210E0DB700973009 /* Products */,
+				531DEB70B9E9C1B7196F2ADC /* Pods */,
+				68BA72EC98D9521996C280FE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = GSnap;
 			sourceTree = "<group>";
 		};
+		531DEB70B9E9C1B7196F2ADC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4BB43E7C78DAAA5B3074D783 /* Pods-GSnap.debug.xcconfig */,
+				9E8021795595C86E75CF7AF8 /* Pods-GSnap.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		68BA72EC98D9521996C280FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29759C209E58304A5FC275EB /* Pods_GSnap.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E53A1FD210E0DB800973009 /* Build configuration list for PBXNativeTarget "GSnap" */;
 			buildPhases = (
+				DDA4DB86DDF1FEE1A2FA7C4B /* [CP] Check Pods Manifest.lock */,
 				1E53A1E7210E0DB700973009 /* Sources */,
 				1E53A1E8210E0DB700973009 /* Frameworks */,
 				1E53A1E9210E0DB700973009 /* Resources */,
+				045DC3B60DAF9D453A38CBC2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +155,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		045DC3B60DAF9D453A38CBC2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GSnap/Pods-GSnap-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GSnap/Pods-GSnap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDA4DB86DDF1FEE1A2FA7C4B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GSnap-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1E53A1E7210E0DB700973009 /* Sources */ = {
@@ -278,6 +343,7 @@
 		};
 		1E53A1FE210E0DB800973009 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BB43E7C78DAAA5B3074D783 /* Pods-GSnap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -296,6 +362,7 @@
 		};
 		1E53A1FF210E0DB800973009 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E8021795595C86E75CF7AF8 /* Pods-GSnap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
