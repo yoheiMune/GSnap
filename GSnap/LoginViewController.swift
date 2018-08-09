@@ -19,11 +19,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO 開発よう.
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            appDelegate.showTimelineStoryboard()
-        }
-
+        loginIdInput.delegate = self
+        loginPasswordInput.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,16 +62,14 @@ class LoginViewController: UIViewController {
             }
             
         }
-        
-        
-        
-        
-        
-        
-        
-        // OK.
-        
     }
+}
+
+extension LoginViewController : UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
