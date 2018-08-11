@@ -3,7 +3,7 @@
 //  GSnap
 //
 //  Created by Munesada Yohei on 2018/07/29.
-//  Copyright © 2018年 Munesada Yohei. All rights reserved.
+//  Copyright © 2018 Munesada Yohei. All rights reserved.
 //
 
 import UIKit
@@ -66,7 +66,6 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController : UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

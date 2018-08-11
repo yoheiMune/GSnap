@@ -64,7 +64,7 @@
         <scene sceneID="5no-ct-GJ1">
             <objects>
                 <navigationController id="Qw6-PD-oRz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="タイムライン" id="oBh-cX-X6L"/>
+                    <tabBarItem key="tabBarItem" title="タイムライン" image="icon-timeline" id="oBh-cX-X6L"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Prz-aj-Svr">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -81,7 +81,7 @@
         <scene sceneID="qb6-aI-4nk">
             <objects>
                 <navigationController id="b2F-aA-evs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="投稿" id="zbx-xW-3HH"/>
+                    <tabBarItem key="tabBarItem" title="投稿" image="icon-camera" id="zbx-xW-3HH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="g8g-U9-dq5">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -109,30 +109,42 @@
                                     <action selector="onTapPost:" destination="Oha-hm-aBe" eventType="touchUpInside" id="nm8-PV-j16"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="① メッセージを入力" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhT-nB-toA">
+                                <rect key="frame" x="20" y="104" width="112" height="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="ここをタップしてメッセージを書こう！" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dgR-eW-WEv">
-                                <rect key="frame" x="20" y="84" width="335" height="100"/>
+                                <rect key="frame" x="20" y="134" width="335" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="iq4-p1-QXu"/>
+                                    <constraint firstAttribute="height" constant="80" id="iq4-p1-QXu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="② 写真を選択" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92a-Cn-cGA">
+                                <rect key="frame" x="20" y="254" width="75" height="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cru-nT-2qw">
-                                <rect key="frame" x="32.5" y="399" width="123" height="30"/>
+                                <rect key="frame" x="32.5" y="479" width="123" height="30"/>
                                 <state key="normal" title="カメラを起動する"/>
                                 <connections>
                                     <action selector="onTapCamera:" destination="Oha-hm-aBe" eventType="touchUpInside" id="lWB-JM-rio"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Auy-gH-tYa">
-                                <rect key="frame" x="100" y="204" width="175" height="175"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="Auy-gH-tYa">
+                                <rect key="frame" x="100" y="284" width="175" height="175"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Auy-gH-tYa" secondAttribute="height" multiplier="1:1" id="t4B-AO-E8X"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAY-DT-9ZJ">
-                                <rect key="frame" x="243" y="399" width="77" height="30"/>
+                                <rect key="frame" x="243" y="479" width="77" height="30"/>
                                 <state key="normal" title="写真を選ぶ"/>
                                 <connections>
                                     <action selector="onTapPhoto:" destination="Oha-hm-aBe" eventType="touchUpInside" id="pqa-aY-iOZ"/>
@@ -141,18 +153,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dgR-eW-WEv" firstAttribute="top" secondItem="kfm-vs-quG" secondAttribute="top" constant="20" id="4A8-Sd-O1U"/>
                             <constraint firstItem="dgR-eW-WEv" firstAttribute="leading" secondItem="kfm-vs-quG" secondAttribute="leading" constant="20" id="4rr-IF-DmO"/>
                             <constraint firstItem="kfm-vs-quG" firstAttribute="trailing" secondItem="dgR-eW-WEv" secondAttribute="trailing" constant="20" id="7K8-rN-xHC"/>
                             <constraint firstItem="cru-nT-2qw" firstAttribute="centerX" secondItem="kfm-vs-quG" secondAttribute="centerX" multiplier="0.5" id="8Mb-4c-WfZ"/>
                             <constraint firstItem="AAY-DT-9ZJ" firstAttribute="centerX" secondItem="kfm-vs-quG" secondAttribute="centerX" multiplier="1.5" id="8gW-yW-YH5"/>
-                            <constraint firstItem="Auy-gH-tYa" firstAttribute="top" secondItem="dgR-eW-WEv" secondAttribute="bottom" constant="20" id="Fuc-GC-en1"/>
+                            <constraint firstItem="hhT-nB-toA" firstAttribute="top" secondItem="kfm-vs-quG" secondAttribute="top" constant="40" id="Kya-qL-H4e"/>
                             <constraint firstItem="kfm-vs-quG" firstAttribute="trailing" secondItem="Auy-gH-tYa" secondAttribute="trailing" constant="100" id="MFC-vG-1bR"/>
                             <constraint firstItem="1LA-ad-6yQ" firstAttribute="centerX" secondItem="kfm-vs-quG" secondAttribute="centerX" id="MXD-Xf-WFA"/>
                             <constraint firstItem="AAY-DT-9ZJ" firstAttribute="centerY" secondItem="cru-nT-2qw" secondAttribute="centerY" id="Qrk-hT-4vi"/>
+                            <constraint firstItem="Auy-gH-tYa" firstAttribute="top" secondItem="92a-Cn-cGA" secondAttribute="bottom" constant="15" id="S0u-Uk-qXt"/>
+                            <constraint firstItem="92a-Cn-cGA" firstAttribute="leading" secondItem="kfm-vs-quG" secondAttribute="leading" constant="20" id="WJy-rI-kDo"/>
                             <constraint firstItem="cru-nT-2qw" firstAttribute="top" secondItem="Auy-gH-tYa" secondAttribute="bottom" constant="20" id="ZBu-JP-5cQ"/>
+                            <constraint firstItem="dgR-eW-WEv" firstAttribute="top" secondItem="hhT-nB-toA" secondAttribute="bottom" constant="15" id="q0p-FG-vWF"/>
                             <constraint firstItem="kfm-vs-quG" firstAttribute="bottom" secondItem="1LA-ad-6yQ" secondAttribute="bottom" constant="40" id="riQ-xs-vm9"/>
+                            <constraint firstItem="92a-Cn-cGA" firstAttribute="top" secondItem="dgR-eW-WEv" secondAttribute="bottom" constant="40" id="sZU-zl-Wfq"/>
                             <constraint firstItem="Auy-gH-tYa" firstAttribute="leading" secondItem="kfm-vs-quG" secondAttribute="leading" constant="100" id="yhr-CS-gE0"/>
+                            <constraint firstItem="hhT-nB-toA" firstAttribute="leading" secondItem="kfm-vs-quG" secondAttribute="leading" constant="20" id="z53-Ec-bnj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kfm-vs-quG"/>
                     </view>
@@ -170,7 +186,7 @@
         <scene sceneID="nbX-Qr-En7">
             <objects>
                 <navigationController id="c60-EY-3Ay" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="マイページ" id="ZoZ-f6-wYZ"/>
+                    <tabBarItem key="tabBarItem" title="マイページ" image="icon-mypage" id="ZoZ-f6-wYZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qNa-I9-cCw">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -230,4 +246,10 @@
             <point key="canvasLocation" x="-98.400000000000006" y="1744.6776611694154"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon-camera" width="25" height="25"/>
+        <image name="icon-mypage" width="25" height="25"/>
+        <image name="icon-timeline" width="25" height="25"/>
+        <image name="noImage" width="400" height="400"/>
+    </resources>
 </document>

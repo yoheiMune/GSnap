@@ -8,15 +8,30 @@
 
 import UIKit
 
+let defaultPostMessage = "ここをタップしてメッセージを書こう！"
+
 class PostViewController: UIViewController {
     
     @IBOutlet weak var userImageView: UIImageView!
     
     @IBOutlet weak var textView: UITextView!
     
+    private var imageSelected = false
+    
     override func viewDidLoad() {
         self.title = "投稿"
         self.textView.delegate = self
+        
+        // TextViewに枠線を追加.
+        textView.layer.cornerRadius = 3
+        textView.layer.borderColor = UIColor.lightGray.cgColor
+        textView.layer.borderWidth = 1
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        imageSelected = false
+        textView.text = defaultPostMessage
+        userImageView.image = UIImage(named: "noImage")
     }
     
     @IBAction func onTapCamera(_ sender: Any) {
@@ -53,7 +68,7 @@ class PostViewController: UIViewController {
     @IBAction func onTapPost(_ sender: Any) {
         
         // 入力チェック.
-        guard let image = userImageView.image else {
+        if imageSelected == false {
             self.showAlert(message: "投稿する画像を選択してください。")
             return
         }
@@ -61,10 +76,14 @@ class PostViewController: UIViewController {
             self.showAlert(message: "投稿する文言を入力してください。")
             return
         }
+        if textView.text == defaultPostMessage {
+            self.showAlert(message: "投稿する文言を入力してください。")
+            return
+        }
         
         // APIで投稿.
         self.showProgress()
-        ApiManager.shared.post(image: image, text: text) { [weak self] errorInfo in
+        ApiManager.shared.post(image: userImageView.image!, text: text) { [weak self] errorInfo in
             
             self?.hideProgress()
             
@@ -99,6 +118,8 @@ extension PostViewController: UIImagePickerControllerDelegate {
             image = self.cropToRect(image: image)
             // 画面に表示.
             self.userImageView.image = image
+            // 設定済みをマーク.
+            self.imageSelected = true
         }
     }
     
@@ -144,7 +165,7 @@ extension PostViewController: UIImagePickerControllerDelegate {
 extension PostViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "ここをタップしてメッセージを書こう！" {
+        if textView.text == defaultPostMessage {
             textView.text = ""
         }
     }
