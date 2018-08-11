@@ -90,7 +90,6 @@ class ApiManager {
         
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             multipartFormData.append(text.data(using: .utf8, allowLossyConversion: true)!, withName: "body")
-//            multipartFormData.append(UIImagePNGRepresentation(image)!, withName: "file", fileName: "image.png", mimeType: "image/png")
             multipartFormData.append(UIImageJPEGRepresentation(image, 0.8)!, withName: "file", fileName: "image.png", mimeType: "image/png")
             
         }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { result in

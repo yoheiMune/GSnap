@@ -44,7 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func showTimelineStoryboard() {        
         let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
         UIApplication.shared.keyWindow?.rootViewController = mainVC
-        print("showTimelineStoryboard: \(mainVC)")
     }
 
 }

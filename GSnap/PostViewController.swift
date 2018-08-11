@@ -178,15 +178,3 @@ extension PostViewController: UITextViewDelegate {
         return true
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

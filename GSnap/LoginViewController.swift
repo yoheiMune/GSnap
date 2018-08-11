@@ -23,11 +23,6 @@ class LoginViewController: UIViewController {
         loginPasswordInput.delegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     @IBAction func onTapLogin(_ sender: Any) {
         
         guard let loginId = loginIdInput.text,
