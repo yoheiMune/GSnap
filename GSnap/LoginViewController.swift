@@ -51,6 +51,9 @@ class LoginViewController: UIViewController {
                 return
             }
             
+            // 成功したよ、ダイアログの表示.
+            self?.showAlert(message: "ログイン成功したよ！")
+            
             // 成功したので、スレッドを表示する.
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
                 appDelegate.showTimelineStoryboard()
