@@ -42,17 +42,17 @@ class LoginViewController: UIViewController {
         errorLabel.isHidden = true
         
         // APIでログイン.
-        ApiManager.shared.login(loginId: loginId, password: loginPassword) { [weak self] errorInfo in
+        ApiManager.shared.login(loginId: loginId, password: loginPassword) { errorInfo in
             
             // エラー表示.
             if let errorInfo = errorInfo {
-                self?.errorLabel.isHidden = false
-                self?.errorLabel.text = errorInfo["message"]
+                self.errorLabel.isHidden = false
+                self.errorLabel.text = errorInfo["message"]
                 return
             }
             
             // 成功したよ、ダイアログの表示.
-            self?.showAlert(message: "ログイン成功したよ！")
+            self.showAlert(message: "ログイン成功したよ！")
             
             // 成功したので、スレッドを表示する.
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
