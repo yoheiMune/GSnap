@@ -24,7 +24,7 @@ class TimelineCell : UITableViewCell {
             guard let post = post else {
                 return
             }
-                        
+
             // 画像は一旦初期化.
             self.photoImageView.image = UIImage(named: "default")
             
