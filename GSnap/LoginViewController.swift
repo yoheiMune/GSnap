@@ -8,23 +8,35 @@
 
 import UIKit
 
+/**
+    ログイン機能を扱うViewController.
+ */
 class LoginViewController: UIViewController {
 
+    // テキストフィールド（ログインID)
     @IBOutlet weak var loginIdInput: UITextField!
     
+    // テキストフィールド（パスワード)
     @IBOutlet weak var loginPasswordInput: UITextField!
     
+    // エラーラベル
     @IBOutlet weak var errorLabel: UILabel!
     
+    // ViewControllerが読み込まれた時に呼び出される.
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // テキストフィールドのdelegateを設定する.
         loginIdInput.delegate = self
         loginPasswordInput.delegate = self
     }
 
+    /**
+        ログインボタンをタップした時.
+    */
     @IBAction func onTapLogin(_ sender: Any) {
         
+        // ログインIDやパスワードが未指定の場合はエラー.
         guard let loginId = loginIdInput.text,
             let loginPassword = loginPasswordInput.text else {
                 errorLabel.isHidden = false
@@ -32,6 +44,7 @@ class LoginViewController: UIViewController {
                 return
         }
         
+        // ログインIDやパスワードが未指定の場合はエラー.
         if loginId.isEmpty && loginPassword.isEmpty {
             errorLabel.isHidden = false
             errorLabel.text = "ログインIDとパスワードは必ず入力してください。"
@@ -63,8 +76,12 @@ class LoginViewController: UIViewController {
     }
 }
 
+// テキストフィールドのDelegate実装.
 extension LoginViewController : UITextFieldDelegate {
+    
+    // リターンキーが押された時.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // キーボードを閉じる.
         textField.resignFirstResponder()
         return true
     }

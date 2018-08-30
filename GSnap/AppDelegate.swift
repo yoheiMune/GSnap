@@ -3,7 +3,7 @@
 //  GSnap
 //
 //  Created by Munesada Yohei on 2018/07/29.
-//  Copyright © 2018年 Munesada Yohei. All rights reserved.
+//  Copyright © 2018 Munesada Yohei. All rights reserved.
 //
 
 import UIKit
@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    /// ログインからタイムラインへストーリーボードを切り替えます.
     func showTimelineStoryboard() {        
         let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
         UIApplication.shared.keyWindow?.rootViewController = mainVC
