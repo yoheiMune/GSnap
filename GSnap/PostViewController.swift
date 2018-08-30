@@ -28,12 +28,6 @@ class PostViewController: UIViewController {
         textView.layer.borderWidth = 1
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        imageSelected = false
-        textView.text = defaultPostMessage
-        userImageView.image = UIImage(named: "noImage")
-    }
-    
     @IBAction func onTapCamera(_ sender: Any) {
         
         // カメラ起動が可能かをチェック.

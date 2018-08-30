@@ -9,9 +9,9 @@
 import Foundation
 import Alamofire
 
-let apiRoot = "http://localhost:5000"
+//let apiRoot = "http://localhost:5000"
 //let apiRoot = "http://100.67.164.251:5000"
-//let apiRoot = "http://gsnap.yoheim.tech"
+let apiRoot = "http://gsnap.yoheim.tech"
 
 class ApiManager {
     
@@ -169,6 +169,64 @@ class ApiManager {
         }
     }
 
+    func getComments(postId: Int, callback: @escaping ([String: String]?, [[String: Any]]?) -> Void) {
+        
+        guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else {
+            callback([ "message" : "ログインが必要です"], nil)
+            return
+        }
+        
+        let url = apiRoot + "/api/posts/\(postId)/comments?api_token=" + apiToken
+        print(url)
+        
+        Alamofire.request(url).responseJSON { response in
+            
+            let statusCode = response.response!.statusCode
+            
+            // 失敗した場合.
+            if statusCode != 200 {
+                callback([ "message" : "サーバーでエラーが発生しました。"], nil)
+                return
+            }
+            
+            // 成功した場合.
+            if let data = response.result.value as? [[String : Any]] {
+                print("comments: \(data)")
+                callback(nil, data)
+            }
+        }
+    }
+
+    func addComment(postId: Int, comment: String, callback: @escaping (([String: String]?) -> Void)) {
+        
+        guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else {
+            callback(["message" : "ログインが必要です"])
+            return
+        }
+        
+        let url = apiRoot + "/api/posts/\(postId)/comments?api_token=" + apiToken
+        print("POST \(url)")
+
+        let headers: HTTPHeaders = [ "Content-type" : "application/json" ]
+        let params: [String: Any] = [
+            "comment" : comment
+        ]
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
+            .responseJSON { response in
+                let statusCode = response.response!.statusCode
+                
+                // 失敗した場合.
+                if statusCode != 201 {
+                    if let errorInfo = response.result.value as? [String : String] {
+                        callback(errorInfo)
+                    }
+                    return
+                }
+                
+                callback(nil)
+        }
+    }
 }
 
 

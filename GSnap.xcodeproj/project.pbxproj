@@ -20,6 +20,7 @@
 		1E53A1F4210E0DB700973009 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E53A1F2210E0DB700973009 /* Login.storyboard */; };
 		1E53A1F6210E0DB800973009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E53A1F5210E0DB800973009 /* Assets.xcassets */; };
 		1E53A1F9210E0DB800973009 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E53A1F7210E0DB800973009 /* LaunchScreen.storyboard */; };
+		1EF50DF32137D69100FE251E /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF50DF22137D69100FE251E /* CommentViewController.swift */; };
 		8A8E5938706AD7AA759CB1E2 /* Pods_GSnap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29759C209E58304A5FC275EB /* Pods_GSnap.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		1E53A1F5210E0DB800973009 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E53A1F8210E0DB800973009 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E53A1FA210E0DB800973009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EF50DF22137D69100FE251E /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		29759C209E58304A5FC275EB /* Pods_GSnap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GSnap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BB43E7C78DAAA5B3074D783 /* Pods-GSnap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GSnap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GSnap/Pods-GSnap.debug.xcconfig"; sourceTree = "<group>"; };
 		9E8021795595C86E75CF7AF8 /* Pods-GSnap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GSnap.release.xcconfig"; path = "Pods/Target Support Files/Pods-GSnap/Pods-GSnap.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				1E0379BB2118143D000A0080 /* TimelineCell.xib */,
 				1E0379BD21181C92000A0080 /* PostViewController.swift */,
 				1E0379BF21183790000A0080 /* MypageViewController.swift */,
+				1EF50DF22137D69100FE251E /* CommentViewController.swift */,
 			);
 			path = GSnap;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EF50DF32137D69100FE251E /* CommentViewController.swift in Sources */,
 				1E0379BA21181418000A0080 /* TimelineCell.swift in Sources */,
 				1E0379B22117FDA1000A0080 /* Api.swift in Sources */,
 				1E0379BE21181C92000A0080 /* PostViewController.swift in Sources */,

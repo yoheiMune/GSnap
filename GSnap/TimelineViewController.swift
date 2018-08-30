@@ -21,6 +21,15 @@ class TimelineViewController: UITableViewController {
         super.viewWillAppear(animated)
         self.fetchData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "comments" {
+            if let post = sender as? [String: Any] {
+                let vc = segue.destination as! CommentViewController
+                vc.post = post
+            }
+        }
+    }
 }
 
 extension TimelineViewController {
@@ -31,6 +40,14 @@ extension TimelineViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineCell", for: indexPath) as! TimelineCell
         cell.post = self.posts[indexPath.row]
         return cell
+    }
+}
+
+extension TimelineViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let post = self.posts[indexPath.row]
+        self.performSegue(withIdentifier: "comments", sender: post)
     }
 }
 
