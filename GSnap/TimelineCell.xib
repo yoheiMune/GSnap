@@ -44,6 +44,17 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXV-DH-V4a">
+                        <rect key="frame" x="207" y="267" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="9Ai-ya-yVf"/>
+                            <constraint firstAttribute="width" constant="50" id="Fli-2J-Mi2"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="like"/>
+                        <connections>
+                            <action selector="onLike:" destination="S80-Is-1B5" eventType="touchUpInside" id="cvT-gg-fbZ"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="bNr-Hh-PVj" firstAttribute="leading" secondItem="N1P-Ak-3Ks" secondAttribute="trailing" constant="10" id="4QO-IZ-99G"/>
@@ -51,10 +62,12 @@
                     <constraint firstItem="7ga-cb-cdG" firstAttribute="leading" secondItem="MeC-Gk-KQC" secondAttribute="leading" constant="10" id="9il-0T-Xr1"/>
                     <constraint firstItem="FLd-KZ-LY6" firstAttribute="leading" secondItem="MeC-Gk-KQC" secondAttribute="leading" constant="10" id="FZ3-Ee-1b5"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="FLd-KZ-LY6" secondAttribute="bottom" constant="10" id="G0Q-uK-U0K"/>
+                    <constraint firstItem="dXV-DH-V4a" firstAttribute="top" secondItem="7ga-cb-cdG" secondAttribute="bottom" constant="-60" id="HCA-25-gh1"/>
                     <constraint firstItem="FLd-KZ-LY6" firstAttribute="top" secondItem="7ga-cb-cdG" secondAttribute="bottom" constant="10" id="N5w-Un-Sn8"/>
                     <constraint firstItem="bNr-Hh-PVj" firstAttribute="centerY" secondItem="N1P-Ak-3Ks" secondAttribute="centerY" id="OmG-Qr-IWr"/>
                     <constraint firstItem="7ga-cb-cdG" firstAttribute="top" secondItem="N1P-Ak-3Ks" secondAttribute="bottom" constant="10" id="TdU-tt-1bH"/>
                     <constraint firstAttribute="trailing" secondItem="bNr-Hh-PVj" secondAttribute="trailing" constant="10" id="WFC-iU-Dmx"/>
+                    <constraint firstItem="dXV-DH-V4a" firstAttribute="leading" secondItem="7ga-cb-cdG" secondAttribute="trailing" constant="-60" id="YpP-1z-phF"/>
                     <constraint firstItem="N1P-Ak-3Ks" firstAttribute="leading" secondItem="MeC-Gk-KQC" secondAttribute="leading" constant="10" id="fCB-gM-O0b"/>
                     <constraint firstAttribute="trailing" secondItem="FLd-KZ-LY6" secondAttribute="trailing" constant="10" id="oSc-ab-NjM"/>
                     <constraint firstItem="N1P-Ak-3Ks" firstAttribute="top" secondItem="MeC-Gk-KQC" secondAttribute="top" constant="10" id="xxv-bt-C7n"/>
@@ -63,10 +76,14 @@
             <connections>
                 <outlet property="avatarImageView" destination="N1P-Ak-3Ks" id="xOq-Md-rIX"/>
                 <outlet property="bodyLabel" destination="FLd-KZ-LY6" id="EAn-dY-G9s"/>
+                <outlet property="likeButton" destination="dXV-DH-V4a" id="5L2-hy-mHg"/>
                 <outlet property="photoImageView" destination="7ga-cb-cdG" id="6Qu-hl-N9w"/>
                 <outlet property="userNameLabel" destination="bNr-Hh-PVj" id="Ymc-u6-w9Q"/>
             </connections>
             <point key="canvasLocation" x="-59.5" y="-95.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="like" width="512" height="512"/>
+    </resources>
 </document>

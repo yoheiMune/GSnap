@@ -18,6 +18,8 @@ class TimelineCell : UITableViewCell {
     
     @IBOutlet weak var bodyLabel: UILabel!
     
+    @IBOutlet weak var likeButton: UIButton!
+    
     var post: [String: Any]? {
         didSet {
             
@@ -47,6 +49,51 @@ class TimelineCell : UITableViewCell {
             if let body = post["body"] as? String {
                 self.bodyLabel.text = body
             }
+            
+            // いいねボタンの状態.
+            if let liked = post["liked"] as? Bool {
+                if liked {
+                    self.likeButton.setImage(UIImage(named: "like-on"), for: .normal)
+                } else {
+                    self.likeButton.setImage(UIImage(named: "like"), for: .normal)
+                }
+            }
         }
     }
+    
+    @IBAction func onLike(_ sender: Any) {
+        
+        guard var post = self.post else {
+            return
+        }
+        
+        if let liked = post["liked"] as? Bool {
+            if liked {
+                self.post!["liked"] = false
+                self.likeButton.setImage(UIImage(named: "like"), for: .normal)
+                ApiManager.shared.removeLike(postId: post["id"] as! Int) { errorInfo in
+                    if let errorInfo = errorInfo {
+                        print("error: \(errorInfo)")
+                    }
+                    print("OK unlike.")
+                }
+            } else {
+                self.post!["liked"] = true
+                self.likeButton.setImage(UIImage(named: "like-on"), for: .normal)
+                ApiManager.shared.addLike(postId: post["id"] as! Int) { errorInfo in
+                    if let errorInfo = errorInfo {
+                        print("error: \(errorInfo)")
+                    }
+                    print("OK like.")
+                }
+            }
+        }
+
+    }
+    
+    
+    
+    
+    
+    
 }

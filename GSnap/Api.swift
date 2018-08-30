@@ -9,9 +9,9 @@
 import Foundation
 import Alamofire
 
-//let apiRoot = "http://localhost:5000"
+let apiRoot = "http://localhost:5000"
 //let apiRoot = "http://100.67.164.251:5000"
-let apiRoot = "http://gsnap.yoheim.tech"
+//let apiRoot = "http://gsnap.yoheim.tech"
 
 class ApiManager {
     
@@ -61,6 +61,7 @@ class ApiManager {
         }
         
         let url = apiRoot + "/api/posts?api_token=" + apiToken
+        print(url)
 
         Alamofire.request(url).responseJSON { response in
 
@@ -74,6 +75,7 @@ class ApiManager {
 
             // 成功した場合.
             if let data = response.result.value as? [[String : Any]] {
+                print("timeline: \(data)")
                 callback(nil, data)
             }
         }
@@ -112,7 +114,61 @@ class ApiManager {
             }
         }
     }
-    
+
+    func addLike(postId: Int, callback: @escaping ([String: Any]?) -> Void) {
+        
+        guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else {
+            callback([ "message" : "ログインが必要です"])
+            return
+        }
+        
+        let url = "\(apiRoot)/api/posts/\(postId)/likes?api_token=\(apiToken)"
+        print("POST \(url)")
+        
+        Alamofire.request(url, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            let statusCode = response.response!.statusCode
+            
+            // 失敗した場合.
+            if statusCode != 201 {
+                if let errorInfo = response.result.value as? [String : String] {
+                    callback(errorInfo)
+                }
+                return
+            }
+            
+            // 成功した場合.
+            callback(nil)
+        }
+    }
+
+    func removeLike(postId: Int, callback: @escaping ([String: Any]?) -> Void) {
+        
+        guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else {
+            callback([ "message" : "ログインが必要です"])
+            return
+        }
+        
+        let url = "\(apiRoot)/api/posts/\(postId)/likes?api_token=\(apiToken)"
+        print("DELETE \(url)")
+        
+        Alamofire.request(url, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            let statusCode = response.response!.statusCode
+            
+            // 失敗した場合.
+            if statusCode != 200 {
+                if let errorInfo = response.result.value as? [String : String] {
+                    callback(errorInfo)
+                }
+                return
+            }
+            
+            // 成功した場合.
+            callback(nil)
+        }
+    }
+
 }
 
 
