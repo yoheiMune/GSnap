@@ -8,26 +8,37 @@
 
 import UIKit
 
+// 投稿本文のデフォルトメッセージ.
 let defaultPostMessage = "ここをタップしてメッセージを書こう！"
 
+/**
+    投稿ViewController.
+ */
 class PostViewController: UIViewController {
     
+    // ユーザーが選択した画像.
     @IBOutlet weak var userImageView: UIImageView!
     
+    // 投稿本文.
     @IBOutlet weak var textView: UITextView!
     
+    // カメラまたは写真から画像を選択したか？
     private var imageSelected = false
     
     override func viewDidLoad() {
+        // ナビゲーションにタイトルを設定.
         self.title = "投稿"
+        
+        // 本文TextViewのdelegateを設定.
         self.textView.delegate = self
         
-        // TextViewに枠線を追加.
+        // ちょっとだけ装飾（TextViewに枠線を追加）.
         textView.layer.cornerRadius = 3
         textView.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.borderWidth = 1
     }
     
+    /// カメラボタンがタップされた.
     @IBAction func onTapCamera(_ sender: Any) {
         
         // カメラ起動が可能かをチェック.
@@ -43,6 +54,7 @@ class PostViewController: UIViewController {
         self.present(picker, animated: true)
     }
     
+    /// 写真ボタンがタップされた.
     @IBAction func onTapPhoto(_ sender: Any) {
         
         // アルバムが利用可能かをチェック.
@@ -58,7 +70,7 @@ class PostViewController: UIViewController {
         self.present(picker, animated: true)
     }
     
-    
+    /// 投稿ボタンがタップされた.
     @IBAction func onTapPost(_ sender: Any) {
         
         // 入力チェック.
@@ -74,13 +86,17 @@ class PostViewController: UIViewController {
             self.showAlert(message: "投稿する文言を入力してください。")
             return
         }
-        
-        // APIで投稿.
+
+        // 進捗表示を開始.
         self.showProgress()
+
+        // APIで投稿.
         ApiManager.shared.post(image: userImageView.image!, text: text) { [weak self] errorInfo in
-            
+        
+            // 進捗表示を終了.
             self?.hideProgress()
             
+            // エラー処理.
             if let errorInfo = errorInfo {
                 if let message = errorInfo["message"] as? String {
                     self?.showAlert(message: message)
@@ -90,6 +106,7 @@ class PostViewController: UIViewController {
                 return
             }
             
+            // 投稿完了を通知.
             self?.showAlert(message: "投稿しました。")
             
             // タイムラインを表示.
@@ -98,15 +115,19 @@ class PostViewController: UIViewController {
     }
 }
 
+// UIImagePickerController で必要なので実装（具体的な処理は不要なので中身はない）.
 extension PostViewController: UINavigationControllerDelegate {}
 
+// カメラor写真で画像が選択された時などの処理を実装する.
 extension PostViewController: UIImagePickerControllerDelegate {
     
+    // カメラor写真で画像が選択された
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        // 閉じる.
+        // UIImagePickerControllerを閉じる.
         picker.dismiss(animated: true, completion: nil)
         
+        // ユーザーがカメラで撮影した or 写真から選んだ、画像がある場合.
         if var image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             // このアプリでは勝手に正方形にトリミングしちゃう.
             image = self.cropToRect(image: image)
@@ -117,6 +138,7 @@ extension PostViewController: UIImagePickerControllerDelegate {
         }
     }
     
+    // 画像を勝手に、上下中央で正方形にトリミングする.
     fileprivate func cropToRect(image: UIImage) -> UIImage {
         
         var image = image
@@ -130,6 +152,7 @@ extension PostViewController: UIImagePickerControllerDelegate {
             image = __image
         }
 
+        // 正方形にする処理.
         if image.size.width != image.size.height {
             var x: CGFloat = 0, y: CGFloat = 0, w = image.size.width, h = image.size.height
             if w > h { // landscape.
@@ -156,14 +179,17 @@ extension PostViewController: UIImagePickerControllerDelegate {
     }
 }
 
+// UITextViewDelegate
 extension PostViewController: UITextViewDelegate {
     
+    // 書き始める時に、デフォルトメッセージがあれば削除する.
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == defaultPostMessage {
             textView.text = ""
         }
     }
     
+    // 改行が入力されたらバーチャルキーボードを閉じる.
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if (text == "\n") {
             self.textView.resignFirstResponder()
